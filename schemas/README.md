@@ -18,6 +18,33 @@ These schemas define **pure constraints** without defaults. This allows:
 
 ## Schemas
 
+### #UTD
+
+Defines the Unified Template Design pattern used by tasks, roles, and contexts.
+
+**Purpose:**
+- Build prompt text from static files, dynamic command output, and template text
+- Provide consistent pattern across all content generation
+- Support lazy evaluation (only execute commands/read files when needed)
+
+**Fields:**
+
+- `file` (string, optional) - Path to file (provides `{{.file}}`, `{{.file_contents}}`)
+- `command` (string, optional) - Shell command (provides `{{.command}}`, `{{.command_output}}`)
+- `prompt` (string, optional) - Go template with placeholders
+- `shell` (string, optional) - Override global shell (must not be empty)
+- `timeout` (int, optional) - Command timeout in seconds (range: 1-3600, **no default**)
+
+**Constraints:**
+
+- At least one of `file`, `command`, or `prompt` must be present (validated by Go at runtime)
+- `shell` must not be empty string if provided
+- `timeout` must be between 1 and 3600 seconds (if provided)
+
+**Resolution Priority:** `prompt` > `file` > `command`
+
+See: [UTD Pattern Documentation](../../docs/design/utd-pattern.md)
+
 ### #Index
 
 Defines the structure for the asset discovery index.
@@ -43,9 +70,100 @@ Defines the structure for the asset discovery index.
 2. **Module URL**: `start task github.com/someone/task@v0` → skip index → direct install
 3. **Search**: `start task review` → search index → show matches or auto-use single result
 
+### #Role
+
+Defines the schema for AI agent roles (system prompts). Embeds `#UTD` for content generation.
+
+**Role Identification:**
+- Roles are identified by their **map key** (e.g., `roles["code-reviewer"]`)
+- There is no `name` field - the key IS the name
+- Tasks reference roles by this key (e.g., `role: "code-reviewer"`)
+
+**Fields:**
+
+- **From #UTD:** `file`, `command`, `prompt`, `shell`, `timeout` (see #UTD above)
+- `description` (string, optional) - Human-readable description
+- `tags` ([]string, optional) - Tags for categorization/search
+
+**Constraints:**
+
+- At least one of `file`, `command`, or `prompt` must be present (inherited from #UTD)
+- `shell` must not be empty string if provided (inherited from #UTD)
+- `timeout` must be between 1 and 3600 seconds if provided (inherited from #UTD)
+
+### #Context
+
+Defines the schema for context documents. Embeds `#UTD` for content generation.
+
+**Context Identification:**
+- Contexts are identified by their **map key** (e.g., `contexts["environment"]`)
+- There is no `name` field - the key IS the name
+
+**Selection Behavior:**
+- `required: true` = always included in every command
+- `default: true` = included in plain `start`, not with `--context`
+- `tags` = included when matching tag requested via `--context`
+
+**Fields:**
+
+- **From #UTD:** `file`, `command`, `prompt`, `shell`, `timeout` (see #UTD above)
+- `description` (string, optional) - Human-readable description
+- `tags` ([]string, optional) - Tags for grouping and selection (kebab-case)
+- `required` (bool, optional) - Always included in all commands
+- `default` (bool, optional) - Included in plain `start` only
+
+**Constraints:**
+
+- At least one of `file`, `command`, or `prompt` must be present (inherited from #UTD)
+- `shell` must not be empty string if provided (inherited from #UTD)
+- `timeout` must be between 1 and 3600 seconds if provided (inherited from #UTD)
+- Tags must match pattern `[a-z0-9]+(-[a-z0-9]+)*`
+
+**Tag Matching:**
+
+- Case-insensitive: `--context GOLANG` matches tag `golang`
+- Any match: context included if ANY of its tags match ANY requested tags
+- Pseudo-tag `default`: `--context default` selects contexts with `default: true`
+
+See: DR-008 for full selection and tagging behavior
+
+### #Agent
+
+Defines the schema for AI agent configurations. Agents are command templates that launch AI CLI tools.
+
+Unlike other schemas, agents do NOT use UTD - they define command execution, not content generation.
+
+**Agent Identification:**
+- Agents are identified by their **map key** (e.g., `agents["claude"]`)
+- There is no `name` field - the key IS the name
+- Tasks reference agents by this key (e.g., `agent: "claude"`)
+
+**Fields:**
+
+- `command` (string, required) - Command template with placeholders
+- `bin` (string, optional) - Binary name for auto-detection and `{{.bin}}` placeholder
+- `description` (string, optional) - Human-readable description
+- `tags` ([]string, optional) - Tags for categorization/search
+- `default_model` (string, optional) - Default model when `--model` not specified
+- `models` (map, optional) - Friendly names to full model identifiers
+
+**Agent Placeholders:**
+
+- `{{.bin}}` - The bin field value
+- `{{.model}}` - Resolved model identifier
+- `{{.prompt}}` - Composed prompt (from UTD resolution)
+- `{{.role}}` - Role content (inline)
+- `{{.role_file}}` - Role file path
+
+**Constraints:**
+
+- `command` must not be empty
+- `bin` must not be empty if provided
+- Tags must match pattern `[a-z0-9]+(-[a-z0-9]+)*`
+
 ### #Task
 
-Defines the schema for task workflows.
+Defines the schema for task workflows. Embeds `#UTD` for content generation.
 
 **Task Identification:**
 - Tasks are identified by their **map key** (e.g., `tasks["code-review"]`)
@@ -54,21 +172,17 @@ Defines the schema for task workflows.
 
 **Fields:**
 
+- **From #UTD:** `file`, `command`, `prompt`, `shell`, `timeout` (see #UTD above)
 - `description` (string, optional) - Human-readable description
 - `tags` ([]string, optional) - Tags for categorization/search
 - `role` (string, optional) - Reference to role name (validated at runtime)
 - `agent` (string, optional) - Reference to agent name (validated at runtime)
-- `file` (string, optional) - Path to file (provides `{{.file}}`, `{{.file_contents}}`)
-- `command` (string, optional) - Shell command (provides `{{.command}}`, `{{.command_output}}`)
-- `prompt` (string, optional) - Go template with placeholders
-- `shell` (string, optional) - Override global shell (must not be empty)
-- `timeout` (int, optional) - Command timeout in seconds (range: 1-3600, **no default**)
 
 **Constraints:**
 
-- At least one of `file`, `command`, or `prompt` must be present (validated by Go at runtime)
-- `shell` must not be empty string if provided
-- `timeout` must be between 1 and 3600 seconds (if provided)
+- At least one of `file`, `command`, or `prompt` must be present (inherited from #UTD)
+- `shell` must not be empty string if provided (inherited from #UTD)
+- `timeout` must be between 1 and 3600 seconds if provided (inherited from #UTD)
 
 ## Usage
 
@@ -76,13 +190,43 @@ Defines the schema for task workflows.
 
 ```bash
 cd schemas
-cue vet task.cue task_example.cue
+cue vet utd.cue task.cue task_example.cue
+cue vet utd.cue role.cue role_example.cue
+cue vet utd.cue context.cue context_example.cue
+cue vet agent.cue agent_example.cue
+cue vet index.cue index_example.cue
+cue vet utd.cue utd_example.cue
 ```
 
 ### Export Examples
 
 ```bash
-cue export task.cue task_example.cue
+cue export task.cue task_example.cue utd.cue
+cue export role.cue role_example.cue utd.cue
+cue export context.cue context_example.cue utd.cue
+cue export agent.cue agent_example.cue
+cue export index.cue index_example.cue
+cue export utd.cue utd_example.cue
+```
+
+### Using #UTD Directly
+
+```cue
+// contexts/my_context.cue
+package contexts
+
+import "github.com/grantcarthew/start-schemas@v0"
+
+context: schemas.#UTD & {
+    file:    "./PROJECT.md"
+    command: "git status --short"
+    prompt: """
+        Project: {{.file_contents}}
+
+        Status: {{.command_output}}
+        """
+    timeout: 10
+}
 ```
 
 ### In Asset Modules
