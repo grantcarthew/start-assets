@@ -14,6 +14,10 @@ package schemas
 
 	// version info (latest published version)
 	version?: string & =~"^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+
+	// bin is the executable name for PATH detection (agents only)
+	// Used by auto-setup to detect installed AI CLI tools
+	bin?: string & !=""
 }
 
 // #Index defines the structure for the asset discovery index.

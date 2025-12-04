@@ -58,6 +58,7 @@ index: #Index & {
 			description: "Anthropic Claude AI agent configuration"
 			tags: ["ai", "anthropic", "claude", "llm"]
 			version: "v0.1.0"
+			bin:         "claude"
 		}
 
 		"ai/gemini": {
@@ -65,6 +66,23 @@ index: #Index & {
 			description: "Google Gemini AI agent configuration"
 			tags: ["ai", "google", "gemini", "llm"]
 			version: "v0.1.0"
+			bin:         "gemini"
+		}
+
+		"ai/ollama": {
+			module:      "github.com/grantcarthew/start-agent-ai-ollama@v0"
+			description: "Ollama local LLM runner"
+			tags: ["ai", "ollama", "local", "llm"]
+			version: "v0.1.0"
+			bin:         "ollama"
+		}
+
+		"ai/aichat": {
+			module:      "github.com/grantcarthew/start-agent-ai-aichat@v0"
+			description: "Multi-provider AI CLI tool"
+			tags: ["ai", "aichat", "multi-provider"]
+			version: "v0.1.0"
+			bin:         "aichat"
 		}
 	}
 }

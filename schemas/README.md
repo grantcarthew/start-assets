@@ -70,6 +70,15 @@ Defines the structure for the asset discovery index.
 2. **Module URL**: `start task github.com/someone/task@v0` → skip index → direct install
 3. **Search**: `start task review` → search index → show matches or auto-use single result
 
+**Agent Detection:**
+
+The `bin` field (optional, agents only) enables auto-setup by detecting installed AI CLI tools:
+
+1. Fetch index from registry
+2. Check each agent's `bin` value against PATH
+3. Single match → auto-select, multiple → prompt user
+4. Fetch selected agent's package
+
 ### #Role
 
 Defines the schema for AI agent roles (system prompts). Embeds `#UTD` for content generation.
