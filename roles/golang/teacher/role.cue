@@ -1,4 +1,4 @@
-package role
+package teacher
 
 import "github.com/grantcarthew/start-assets/schemas@v0"
 

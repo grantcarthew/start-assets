@@ -1,4 +1,4 @@
-package role
+package agent
 
 import "github.com/grantcarthew/start-assets/schemas@v0"
 

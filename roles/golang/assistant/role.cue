@@ -1,4 +1,4 @@
-package role
+package assistant
 
 import "github.com/grantcarthew/start-assets/schemas@v0"
 

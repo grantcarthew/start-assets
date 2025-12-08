@@ -1,4 +1,4 @@
-module: "github.com/grantcarthew/start-assets/roles/golang/agent@v0"
+module: "github.com/grantcarthew/start-assets/tasks/golang/code-review@v0"
 language: {
 	version: "v0.15.1"
 }

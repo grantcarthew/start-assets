@@ -1,7 +1,12 @@
-module: "github.com/grantcarthew/start-role-golang-assistant@v0"
+module: "github.com/grantcarthew/start-assets/roles/golang/assistant@v0"
 language: {
 	version: "v0.15.1"
 }
 source: {
 	kind: "git"
+}
+deps: {
+	"github.com/grantcarthew/start-assets/schemas@v0": {
+		v: "v0.0.1"
+	}
 }
