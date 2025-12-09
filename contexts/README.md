@@ -2,7 +2,7 @@
 
 Context definitions providing environmental information for AI agents.
 
-Each subdirectory contains a CUE package defining a context with structured data about the working environment.
+Each subdirectory contains a CUE package defining a context with structured data about the working environment. Contexts inject relevant information into prompts based on selection behaviour.
 
 ## Structure
 
@@ -12,6 +12,14 @@ contexts/<name>/
 └── cue.mod/module.cue
 ```
 
+## Selection Behaviour
+
+- `required: true` - Always included in every command
+- `default: true` - Included in plain `start`, excluded with explicit `--context`
+- `tags` - Included when matching tag requested via `--context`
+
 ## Available Contexts
 
-- [agents/](agents/) - AI agent context information
+- [agents/](agents/) - Repository-specific AI agent guidelines from AGENTS.md
+- [environment/](environment/) - Local environment information (user, system, tools)
+- [project/](project/) - Project-specific documentation from project.md

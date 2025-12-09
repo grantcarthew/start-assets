@@ -1,4 +1,4 @@
-module: "github.com/grantcarthew/start-assets/contexts/agents@v0"
+module: "github.com/grantcarthew/start-assets/contexts/project@v0"
 language: {
 	version: "v0.15.1"
 }
