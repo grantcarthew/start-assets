@@ -23,6 +23,7 @@ These schemas define **pure constraints** without defaults. This allows:
 Defines the Unified Template Design pattern used by tasks, roles, and contexts.
 
 **Purpose:**
+
 - Build prompt text from static files, dynamic command output, and template text
 - Provide consistent pattern across all content generation
 - Support lazy evaluation (only execute commands/read files when needed)
@@ -50,16 +51,19 @@ See: [UTD Pattern Documentation](../../docs/design/utd-pattern.md)
 Defines the structure for the asset discovery index.
 
 **Purpose:**
+
 - Enable CLI search and discovery without OCI catalog API
 - Map friendly "category/item" paths to full module URLs
 - Support search by name, description, and tags
 
 **Index Keys:**
+
 - Use `category/item` format (e.g., `"golang/code-review"`)
 - Match user input exactly for direct lookup
 - Match directory structure in repository
 
 **Module Paths:**
+
 - Include full category in module name
 - Format: `github.com/grantcarthew/start-{type}-{category}-{item}@v{major}`
 - Example: `github.com/grantcarthew/start-task-golang-code-review@v0`
@@ -84,6 +88,7 @@ The `bin` field (optional, agents only) enables auto-setup by detecting installe
 Defines the schema for AI agent roles (system prompts). Embeds `#UTD` for content generation.
 
 **Role Identification:**
+
 - Roles are identified by their **map key** (e.g., `roles["code-reviewer"]`)
 - There is no `name` field - the key IS the name
 - Tasks reference roles by this key (e.g., `role: "code-reviewer"`)
@@ -105,10 +110,12 @@ Defines the schema for AI agent roles (system prompts). Embeds `#UTD` for conten
 Defines the schema for context documents. Embeds `#UTD` for content generation.
 
 **Context Identification:**
+
 - Contexts are identified by their **map key** (e.g., `contexts["environment"]`)
 - There is no `name` field - the key IS the name
 
 **Selection Behavior:**
+
 - `required: true` = always included in every command
 - `default: true` = included in plain `start`, not with `--context`
 - `tags` = included when matching tag requested via `--context`
@@ -143,6 +150,7 @@ Defines the schema for AI agent configurations. Agents are command templates tha
 Unlike other schemas, agents do NOT use UTD - they define command execution, not content generation.
 
 **Agent Identification:**
+
 - Agents are identified by their **map key** (e.g., `agents["claude"]`)
 - There is no `name` field - the key IS the name
 - Tasks reference agents by this key (e.g., `agent: "claude"`)
@@ -175,6 +183,7 @@ Unlike other schemas, agents do NOT use UTD - they define command execution, not
 Defines the schema for task workflows. Embeds `#UTD` for content generation.
 
 **Task Identification:**
+
 - Tasks are identified by their **map key** (e.g., `tasks["code-review"]`)
 - There is no `name` field - the key IS the name
 - This avoids duplication and simplifies the schema

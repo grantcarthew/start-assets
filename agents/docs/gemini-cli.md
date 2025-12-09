@@ -1,6 +1,6 @@
 # Google Gemini
 
-- Gemini CLI Repo: https://github.com/google-gemini/gemini-cli
+- Gemini CLI Repo: <https://github.com/google-gemini/gemini-cli>
 
 ## CLI Flags Reference
 
@@ -91,7 +91,7 @@
 | Variable                       | Purpose                             |
 | ------------------------------ | ----------------------------------- |
 | `GEMINI_MODEL`                 | Override default model              |
-| `GEMINI_SYSTEM_MD`             | Path to system prompt markdown file |
+| `GEMINI_SYSTEM_MD`             | Path to system prompt Markdown file |
 | `GEMINI_WRITE_SYSTEM_MD`       | Path to write system prompt         |
 | `GEMINI_SANDBOX`               | Enable sandbox (`docker`, `true`)   |
 | `GEMINI_SANDBOX_IMAGE`         | Custom sandbox Docker image         |

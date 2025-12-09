@@ -1,6 +1,6 @@
 # AIChat
 
-- GitHub Repo: https://github.com/sigoden/aichat
+- GitHub Repo: <https://github.com/sigoden/aichat>
 
 ## CLI Flags Reference
 
@@ -93,6 +93,7 @@ Each client type can have its own environment variables using the pattern:
 `{CLIENT_NAME}_DATA_DIR`, `{CLIENT_NAME}_CONFIG_FILE`, `{CLIENT_NAME}_FUNCTIONS_DIR`
 
 For API keys, clients typically use their standard environment variables:
+
 - `OPENAI_API_KEY`
 - `ANTHROPIC_API_KEY`
 - `GOOGLE_API_KEY`
@@ -179,7 +180,7 @@ clients:
 
 ## Roles
 
-Roles are markdown files stored in `~/.config/aichat/roles/`.
+Roles are Markdown files stored in `~/.config/aichat/roles/`.
 
 ### Role Format
 

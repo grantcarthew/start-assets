@@ -1,7 +1,7 @@
 # Claude Code
 
-- GitHub Repo: https://github.com/anthropics/claude-code
-- Documentation: https://docs.anthropic.com/en/docs/claude-code/overview
+- GitHub Repo: <https://github.com/anthropics/claude-code>
+- Documentation: <https://docs.anthropic.com/en/docs/claude-code/overview>
 
 ## CLI Flags Reference
 
@@ -235,6 +235,7 @@ claude --append-system-prompt-file ROLE.md "Your prompt"
 ```
 
 This replaces the previous workaround:
+
 ```bash
 claude --append-system-prompt "$(cat ROLE.md)" "prompt"
 ```
