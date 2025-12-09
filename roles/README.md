@@ -14,6 +14,6 @@ roles/<category>/<style>/
 
 ## Available Roles
 
-- `golang/agent` - Go programming agent role
-- `golang/assistant` - Go programming assistant role
-- `golang/teacher` - Go programming teacher role
+- [golang/agent/](golang/agent/) - Go programming agent role
+- [golang/assistant/](golang/assistant/) - Go programming assistant role
+- [golang/teacher/](golang/teacher/) - Go programming teacher role

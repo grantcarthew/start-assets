@@ -8,14 +8,13 @@ This repository contains reusable assets for configuring AI agents, roles, conte
 
 ## Structure
 
-```
-start-assets/
-├── agents/      # AI CLI tool definitions
-├── contexts/    # Environmental context definitions
-├── roles/       # System prompt and behaviour definitions
-├── schemas/     # CUE schema definitions
-└── tasks/       # Task instruction definitions
-```
+| Directory | Description |
+|-----------|-------------|
+| [agents/](agents/) | AI CLI tool definitions |
+| [contexts/](contexts/) | Environmental context definitions |
+| [roles/](roles/) | System prompt and behaviour definitions |
+| [schemas/](schemas/) | CUE schema definitions |
+| [tasks/](tasks/) | Task instruction definitions |
 
 ## Usage
 

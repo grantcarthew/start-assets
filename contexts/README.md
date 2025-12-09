@@ -14,4 +14,4 @@ contexts/<name>/
 
 ## Available Contexts
 
-- `agents` - AI agent context information
+- [agents/](agents/) - AI agent context information

@@ -14,4 +14,4 @@ tasks/<category>/<name>/
 
 ## Available Tasks
 
-- `golang/code-review` - Go code review task
+- [golang/code-review/](golang/code-review/) - Go code review task

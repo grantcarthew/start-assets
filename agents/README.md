@@ -14,10 +14,10 @@ agents/<name>/
 
 ## Available Agents
 
-- `claude` - Claude Code by Anthropic
-- `gemini` - Gemini CLI by Google
-- `aichat` - AIChat multi-provider CLI
+- [claude/](claude/) - Claude Code by Anthropic
+- [gemini/](gemini/) - Gemini CLI by Google
+- [aichat/](aichat/) - AIChat multi-provider CLI
 
 ## Documentation
 
-See `docs/` for CLI reference documentation.
+See [docs/](docs/) for CLI reference documentation.
