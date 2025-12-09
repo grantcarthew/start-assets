@@ -4,9 +4,9 @@
 
 ## CLI Flags Reference
 
-> Last updated: 2025-12-09
-> Source: gemini-cli repo commit `91c46311c` (2025-12-08)
-> File: `packages/cli/src/config/config.ts`
+- Last updated: 2025-12-09
+- Source: gemini-cli repo commit `91c46311c` (2025-12-08)
+- File: `packages/cli/src/config/config.ts`
 
 ### Main CLI Flags (Visible)
 

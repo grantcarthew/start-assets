@@ -4,9 +4,9 @@
 
 ## CLI Flags Reference
 
-> Last updated: 2025-12-09
-> Source: aichat repo commit `4ddc28d` (2025-12-01)
-> File: `src/cli.rs`
+- Last updated: 2025-12-09
+- Source: aichat repo commit `4ddc28d` (2025-12-01)
+- File: `src/cli.rs`
 
 ### All CLI Flags (All Visible)
 

@@ -5,9 +5,9 @@
 
 ## CLI Flags Reference
 
-> Last updated: 2025-12-09
-> Source: `claude --help` (version installed locally)
-> Commit: `de49a07` (2025-12-07)
+- Last updated: 2025-12-09
+- Source: `claude --help` (version installed locally)
+- Commit: `de49a07` (2025-12-07)
 
 ### Main CLI Flags
 
