@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Analyse project dependencies for security, maintenance, and compatibility"
 	tags: ["golang", "dependencies", "security", "maintenance", "go-mod"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

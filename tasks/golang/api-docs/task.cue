@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Review and improve API documentation for exported types and functions"
 	tags: ["golang", "documentation", "godoc", "api", "comments"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Refactor Go code to improve structure, readability, and maintainability"
 	tags: ["golang", "refactor", "code-quality", "maintainability", "structure"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

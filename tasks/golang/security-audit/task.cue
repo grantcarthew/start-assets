@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Security audit for vulnerabilities, weaknesses, and attack vectors in Go code"
 	tags: ["golang", "security", "audit", "vulnerabilities", "owasp"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

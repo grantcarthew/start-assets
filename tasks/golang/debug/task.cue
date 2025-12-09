@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Systematically debug and resolve issues in Go code"
 	tags: ["golang", "debug", "troubleshooting", "bugs", "investigation"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

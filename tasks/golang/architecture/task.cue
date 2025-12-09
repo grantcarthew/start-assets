@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Analyse codebase structure, dependencies, and design patterns"
 	tags: ["golang", "architecture", "design", "structure", "dependencies"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

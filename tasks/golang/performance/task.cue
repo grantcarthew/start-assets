@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Profile Go application, identify bottlenecks, and recommend optimizations"
 	tags: ["golang", "performance", "profiling", "optimization", "pprof"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Audit and improve error handling patterns throughout Go codebase"
 	tags: ["golang", "errors", "error-handling", "best-practices", "audit"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

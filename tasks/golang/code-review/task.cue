@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Comprehensive Go code review for correctness, design, and idiomatic patterns"
 	tags: ["golang", "review", "code-quality", "best-practices"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 

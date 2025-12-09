@@ -9,7 +9,7 @@ task: schemas.#Task & {
 	description: "Generate tests for Go code including unit, integration, and benchmark tests"
 	tags: ["golang", "testing", "unit-tests", "benchmarks", "coverage"]
 	role: agentRole.role
-	file: "./task.md"
+	file: "@module/task.md"
 	prompt: """
 		{{.file_contents}}
 
