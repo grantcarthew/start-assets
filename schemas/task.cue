@@ -14,6 +14,7 @@ package schemas
 	tags?: [...string]
 
 	// References (not inline definitions)
-	role?:  string // Must exist in roles (validated at runtime)
+	// role can be a string (runtime resolution) or #Role (CUE dependency)
+	role?:  string | #Role
 	agent?: string // Must exist in agents (validated at runtime)
 }
