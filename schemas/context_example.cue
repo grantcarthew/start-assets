@@ -117,7 +117,7 @@ contexts: "core-config": {
 	required:    true
 	description: "Core configuration context"
 	tags: ["config"] // Redundant - always included anyway
-	file: "~/.config/start/config.cue"
+	file: "~/.config/start/settings.cue"
 	prompt: "Configuration:\n{{.file_contents}}"
 }
 

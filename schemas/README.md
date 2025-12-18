@@ -275,7 +275,7 @@ task: schemas.#Task & {
 ### In User Config
 
 ```cue
-// ~/.config/start/config.cue
+// ~/.config/start/settings.cue
 package config
 
 import "github.com/grantcarthew/start-schemas@v0"
