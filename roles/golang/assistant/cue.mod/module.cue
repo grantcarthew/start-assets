@@ -7,6 +7,6 @@ source: {
 }
 deps: {
 	"github.com/grantcarthew/start-assets/schemas@v0": {
-		v: "v0.0.1"
+		v: "v0.0.3"
 	}
 }
