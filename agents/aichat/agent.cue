@@ -4,7 +4,7 @@ import "github.com/grantcarthew/start-assets/schemas@v0"
 
 agent: schemas.#Agent & {
 	bin:         "aichat"
-	command:     "{{.bin}} --model {{.model}} --prompt '{{.role}}' '{{.prompt}}'"
+	command:     "{{.bin}} --model {{.model}} --prompt {{.role}} {{.prompt}}"
 	description: "AIChat - All-in-one LLM CLI tool by sigoden"
 	default_model: "vertexai:gemini-2.5-flash"
 	models: {

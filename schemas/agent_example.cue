@@ -6,7 +6,7 @@ package schemas
 // Example 1: Full-featured Claude agent
 agents: "claude": {
 	bin:         "claude"
-	command:     "{{.bin}} --model {{.model}} --append-system-prompt '{{.role}}' '{{.prompt}}'"
+	command:     "{{.bin}} --model {{.model}} --append-system-prompt {{.role}} {{.prompt}}"
 	description: "Claude Code by Anthropic"
 	default_model: "sonnet"
 	models: {
@@ -20,7 +20,7 @@ agents: "claude": {
 // Example 2: Gemini with file-based role
 agents: "gemini": {
 	bin:         "gemini"
-	command:     "GEMINI_SYSTEM_MD='{{.role_file}}' {{.bin}} --model {{.model}} '{{.prompt}}'"
+	command:     "GEMINI_SYSTEM_MD={{.role_file}} {{.bin}} --model {{.model}} {{.prompt}}"
 	description: "Google Gemini AI"
 	default_model: "pro"
 	models: {
@@ -32,26 +32,26 @@ agents: "gemini": {
 
 // Example 3: Minimal agent - just a command
 agents: "simple": {
-	command: "my-ai-tool '{{.prompt}}'"
+	command: "my-ai-tool {{.prompt}}"
 }
 
 // Example 4: Custom script wrapper
 agents: "custom-wrapper": {
-	command:     "./scripts/ai-wrapper.sh --role '{{.role}}' --prompt '{{.prompt}}'"
+	command:     "./scripts/ai-wrapper.sh --role {{.role}} --prompt {{.prompt}}"
 	description: "Project-specific AI wrapper script"
 }
 
 // Example 5: Agent with bin but no models
 agents: "aichat": {
 	bin:         "aichat"
-	command:     "{{.bin}} '{{.prompt}}'"
+	command:     "{{.bin}} {{.prompt}}"
 	description: "aichat CLI tool"
 	tags: ["aichat", "cli"]
 }
 
 // Example 6: Debug/test agent - just echoes
 agents: "echo": {
-	command:     "echo 'Would send prompt: {{.prompt}}'"
+	command:     "echo {{.prompt}}"
 	description: "Debug agent that echoes the prompt"
 	tags: ["debug", "test"]
 }
@@ -59,7 +59,7 @@ agents: "echo": {
 // Example 7: OpenAI compatible
 agents: "openai": {
 	bin:         "openai"
-	command:     "{{.bin}} chat --model {{.model}} --system '{{.role}}' '{{.prompt}}'"
+	command:     "{{.bin}} chat --model {{.model}} --system {{.role}} {{.prompt}}"
 	description: "OpenAI API CLI"
 	default_model: "gpt4"
 	models: {
@@ -73,7 +73,7 @@ agents: "openai": {
 // Example 8: Local LLM via Ollama
 agents: "ollama": {
 	bin:         "ollama"
-	command:     "{{.bin}} run {{.model}} '{{.prompt}}'"
+	command:     "{{.bin}} run {{.model}} {{.prompt}}"
 	description: "Ollama local LLM runner"
 	default_model: "llama3"
 	models: {
