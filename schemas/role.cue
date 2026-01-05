@@ -9,10 +9,9 @@ package schemas
 // Roles use the UTD pattern to build the system prompt from
 // static files, dynamic command output, and template text.
 #Role: {
+	// Embed common fields (description, tags, origin)
+	#Base
+
 	// Embed UTD pattern (file, command, prompt, shell, timeout)
 	#UTD
-
-	// Metadata
-	description?: string
-	tags?: [...string]
 }

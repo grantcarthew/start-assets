@@ -13,12 +13,11 @@ package schemas
 //
 // See: DR-008 for full selection and tagging behavior
 #Context: {
+	// Embed common fields (description, tags, origin)
+	#Base
+
 	// Embed UTD pattern (file, command, prompt, shell, timeout)
 	#UTD
-
-	// Metadata
-	description?: string
-	tags?: [...string & =~"^[a-z0-9]+(-[a-z0-9]+)*$"]
 
 	// Selection behavior
 	required?: bool // Always included in all commands

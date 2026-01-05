@@ -6,12 +6,11 @@ package schemas
 // Note: Tasks are identified by their map key (e.g., tasks["code-review"]).
 // There is no 'name' field - the key IS the name.
 #Task: {
+	// Embed common fields (description, tags, origin)
+	#Base
+
 	// Embed UTD pattern (file, command, prompt, shell, timeout)
 	#UTD
-
-	// Metadata
-	description?: string
-	tags?: [...string]
 
 	// References (not inline definitions)
 	// role can be a string (runtime resolution) or #Role (CUE dependency)
