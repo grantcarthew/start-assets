@@ -7,7 +7,7 @@ source: {
 }
 deps: {
 	"github.com/grantcarthew/start-assets/roles/golang/agent@v0": {
-		v: "v0.1.0"
+		v: "v0.1.1"
 	}
 	"github.com/grantcarthew/start-assets/schemas@v0": {
 		v: "v0.1.0"
