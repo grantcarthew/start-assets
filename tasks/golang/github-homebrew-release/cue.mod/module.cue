@@ -1,0 +1,15 @@
+module: "github.com/grantcarthew/start-assets/tasks/golang/github-homebrew-release@v0"
+language: {
+	version: "v0.15.1"
+}
+source: {
+	kind: "git"
+}
+deps: {
+	"github.com/grantcarthew/start-assets/roles/golang/assistant@v0": {
+		v: "v0.1.0"
+	}
+	"github.com/grantcarthew/start-assets/schemas@v0": {
+		v: "v0.1.0"
+	}
+}
